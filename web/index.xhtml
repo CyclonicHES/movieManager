@@ -1,12 +1,70 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- liste des personnes avec la liste de films-->
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title><h:outputText value="#{bundle.indexTitle}"/></title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h1><h:outputText value="#{bundle.peopleList}"/></h1>
+        
+        <h:form>
+            <h:dataTable value="#{peopleBean.people}" var="person">
+                <h:column>
+                    <!-- id -->
+                    <f:facet name="header"><h:outputText value="#{bundle.personId}"/></f:facet>
+                    <h:outputText value="#{person.id}"/>
+                </h:column>
+                <h:column>
+                    <!-- prénom -->
+                    <f:facet name="header"><h:outputText value="#{bundle.personFirstName}"/></f:facet>
+                    <h:commandLink value="#{person.firstName}" action="#{personDetailBean.getPersonToDetail(person)}"/>
+                </h:column>
+                <h:column>
+                    <!-- nom -->
+                    <f:facet name="header"><h:outputText value="#{bundle.personLastName}"/></f:facet>
+                    <h:commandLink value="#{person.lastName}" action="#{personDetailBean.getPersonToDetail(person)}"/>
+                </h:column>
+                <h:column>
+                    <!-- nombre de film -->
+                    <f:facet name="header"><h:outputText value="#{bundle.personMoviesNumber}"/></f:facet>
+                    <h:outputText value="#{person.moviesNumber}"/>
+                </h:column>
+            </h:dataTable>
+            <br/>
+            <!-- ajouter personne -->
+            <h:commandButton value="#{bundle.personAddButton}" action="addPerson"/>
+
+            <h1><h:outputText value="#{bundle.moviesList}"/></h1>
+
+            <h:dataTable value="#{moviesBean.movies}" var="movie">
+                <h:column>
+                    <!-- id -->
+                    <f:facet name="header"><h:outputText value="#{bundle.movieId}"/></f:facet>
+                    <h:outputText value="#{movie.id}"/>
+                </h:column>
+                <h:column>
+                    <!-- nom film -->
+                    <f:facet name="header"><h:outputText value="#{bundle.movieName}"/></f:facet>
+                    <h:commandLink value="#{movie.name}" action="#{movieDetailBean.getMovieToDetail(movie)}"/>
+                </h:column>
+                <h:column>
+                    <!-- producteur -->
+                    <f:facet name="header"><h:outputText value="#{bundle.movieProducer}"/></f:facet>
+                    <h:outputText value="#{movie.producer}"/>
+                </h:column>
+                <h:column>
+                    <!-- nombre de personne -->
+                    <f:facet name="header"><h:outputText value="#{bundle.moviePeopleNumber}"/></f:facet>
+                    <h:outputText value="#{movie.peopleNumber}"/>
+                </h:column>
+            </h:dataTable>
+            <br/>
+            <!-- ajouter film -->
+            <h:commandButton value="#{bundle.movieAddButton}" action="addMovie"/>
+        </h:form>
     </h:body>
 </html>
 
