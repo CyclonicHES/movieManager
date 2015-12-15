@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<!-- créer personne -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title><h:outputText value="#{bundle.createPersonTitle}"/></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="ressources/css/style.css"/>
+    </h:head>
+    <h:body>
+        <h1><h:outputText value="#{bundle.createPersonTitle}"/></h1>
+        
+        <h:form>
+            <h:panelGrid border="0" columns="2">
+                <h:outputLabel for="id" value="#{bundle.personId} : "/>
+                <h:inputText id="id" value="#{createPersonBean.id}" required="true" requiredMessage="#{bundle.createPersonIdError}"/>
+                
+                <h:outputLabel for="firstname" value="#{bundle.personFirstName} : "/>
+                <h:inputText id="firstname" value="#{createPersonBean.firstName}" required="true" requiredMessage="#{bundle.createPersonFirstNameError}"/>
+                
+                <h:outputLabel for="lastname" value="#{bundle.personLastName} : "/>
+                <h:inputText id="lastname" value="#{createPersonBean.lastName}" required="true" requiredMessage="#{bundle.createPersonLastNameError}"/>
+            </h:panelGrid>
+            
+            <!-- Breset -->
+            <h:commandButton id="reset" type="reset" value="#{bundle.createPersonResetButton}"/>
+            <!-- soumission -->
+            <h:commandButton id="submit" type="submit" value="#{bundle.createPersonSubmitButton}" action="#{createPersonBean.submit()}"/>
+            <br/><br/>
+            <!-- index.xhtml -->
+            <h:commandButton id="cancel" value="#{bundle.createPersonCancelButton}" action="cancel" immediate="true"/>
+            <!-- erreurs -->
+            <h:messages styleClass="erreur" showSummary="true" showDetail="false"/>
+        </h:form>
+    </h:body>
+</html>
