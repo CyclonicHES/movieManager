@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<!-- page pour créer un film -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title><h:outputText value="#{bundle.createMovieTitle}"/></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="ressources/css/style.css"/>
+    </h:head>
+    <h:body>
+        <h1><h:outputText value="#{bundle.createMovieTitle}"/></h1>
+        
+        <h:form>
+            <h:panelGrid border="0" columns="2">
+                <h:outputLabel for="id" value="#{bundle.movieId} : "/>
+                <h:inputText id="id" value="#{createMovieBean.id}" required="true" requiredMessage="#{bundle.createMovieIdError}"/>
+                
+                <h:outputLabel for="name" value="#{bundle.movieName} : "/>
+                <h:inputText id="name" value="#{createMovieBean.name}" required="true" requiredMessage="#{bundle.createMovieNameError}"/>
+                
+                <h:outputLabel for="producer" value="#{bundle.movieProducer} : "/>
+                <h:inputText id="producer" value="#{createMovieBean.producer}" required="true" requiredMessage="#{bundle.createMovieProducerError}"/>
+            </h:panelGrid>
+            
+            <!-- reset -->
+            <h:commandButton id="reset" type="reset" value="#{bundle.createMovieResetButton}"/>
+            <!-- soumission -->
+            <h:commandButton id="submit" type="submit" value="#{bundle.createMovieSubmitButton}" action="#{createMovieBean.submit()}"/>
+            <br/><br/>
+            <!-- index -->
+            <h:commandButton id="cancel" value="#{bundle.createMovieCancelButton}" action="cancel" immediate="true"/>
+            <!-- erreurs -->
+            <h:messages styleClass="erreur" showSummary="true" showDetail="false"/>
+        </h:form>
+    </h:body>
+</html>
