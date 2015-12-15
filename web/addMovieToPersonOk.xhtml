@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<!--  confiramtion de l'ajout d'un film -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title><h:outputText value="#{bundle.addMovieToPersonOkSuccess}"/></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1><h:outputText value="#{bundle.addMovieToPersonOkSuccess}"/></h1>
+        
+        <p><h:outputText value="#{bundle.addMovieToPersonOkMessage}"/></p>
+        
+        <h:form>
+            <!-- bouton retour -->
+            <h:commandLink id="returnToPerson" value="#{bundle.addMovieToPersonOkReturnToPerson}" action="#{personDetailBean.getPersonToDetail(addMovieToPersonBean.person)}"/>
+            <br/><br/>
+            <!-- index -->
+            <h:commandLink id="returnHome" value="#{bundle.addMovieToPersonOkReturnHome}" action="returnHome"/>
+        </h:form>
+    </h:body>
+</html>
